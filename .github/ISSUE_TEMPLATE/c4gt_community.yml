@@ -79,6 +79,7 @@ body:
         - ShikshaLokam
         - Tech4Dev
         - Tibil
+        - nasscom foundation
     validations:
       required: true
 
