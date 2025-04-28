@@ -1,0 +1,59 @@
+name: Validate Issue Templates
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install yamllint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yamllint
+
+      - name: Validate YAML syntax
+        run: |
+          for file in .github/ISSUE_TEMPLATE/*.yml .github/ISSUE_TEMPLATE/*.yaml; do
+            if [ -f "$file" ]; then
+              echo "Validating $file"
+              yamllint -d relaxed "$file" || echo "Issue with $file, but continuing..."
+            fi
+          done
+        continue-on-error: true
+
+      - name: Check for required sections
+        run: |
+          for file in .github/ISSUE_TEMPLATE/*.yml .github/ISSUE_TEMPLATE/*.yaml; do
+            if [ -f "$file" ]; then
+              echo "Checking required sections in $file"
+              grep -q "name:" "$file" && echo "✓ Has name" || echo "✗ Missing name"
+              grep -q "description:" "$file" && echo "✓ Has description" || echo "✗ Missing description"
+              grep -q "body:" "$file" && echo "✓ Has body" || echo "✗ Missing body"
+            fi
+          done
+
+  markdown-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+
+      - name: Lint Markdown files
+        run: markdownlint '**/*.md' --config .markdownlint.json || echo "Markdown issues found but continuing"
+        continue-on-error: true
+

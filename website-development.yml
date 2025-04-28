@@ -1,0 +1,134 @@
+name: Website Development Ticket
+description: "Template for Website Development ticket for C4GT NGO Empowerment project"
+title: "[Ticket]: "
+labels: ["enhancement", "high complexity", "analytics"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Ticket Contents
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "Provide a brief project description, goals, number of users, impact, bounty amount (if any), and for Design/Mentorship/Advisory tickets, share a Google Form link."
+      placeholder: |
+        [Provide a brief project description, outlining the need and measurable goals of the feature to be developed. 
+        Kindly, specify the number of users or scale of the product and feature, articulating its anticipated impact and intended use. 
+        Kindly also add the bounty amount you are willing to pay in case of this being a bounty ticket. 
+        For Design, Mentorship & Advisory tickets, make a copy of this google form (https://docs.google.com/forms/d/18EPdoqBUFS6lRoQQbRKKjTvzA711nNTdmU8jinKTXWs/edit) 
+        in your own drive and attach the link.]
+    validations:
+      required: true
+
+  - type: textarea
+    id: goals
+    attributes:
+      label: Goals
+      placeholder: |
+        [Goal 1]
+        [Goal 2]
+        [Goal 3]
+        [Goal 4]
+        [Goal 5]
+        [State and link installation guide/ set-up steps (if any)]
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-outcome
+    attributes:
+      label: Expected Outcome
+      placeholder: "NA"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      placeholder: "na"
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation-details
+    attributes:
+      label: Implementation Details
+      placeholder: "na"
+    validations:
+      required: true
+
+  - type: textarea
+    id: mockups-wireframes
+    attributes:
+      label: Mockups/Wireframes
+      placeholder: "No response"
+    validations:
+      required: false
+
+  - type: input
+    id: product-name
+    attributes:
+      label: Product Name
+      placeholder: "Website development"
+    validations:
+      required: true
+
+  - type: input
+    id: organisation-name
+    attributes:
+      label: Organisation Name
+      placeholder: "C4GT"
+    validations:
+      required: true
+
+  - type: input
+    id: domain
+    attributes:
+      label: Domain
+      placeholder: "No response"
+    validations:
+      required: false
+
+  - type: input
+    id: tech-skills-needed
+    attributes:
+      label: Tech Skills Needed
+      placeholder: "Design, DevOps"
+    validations:
+      required: true
+
+  - type: input
+    id: mentors
+    attributes:
+      label: Mentor(s)
+      placeholder: "@NGOEmpower"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Complexity
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Analytics
+        - Development
+        - Design
+        - Advisory
+    validations:
+      required: true
